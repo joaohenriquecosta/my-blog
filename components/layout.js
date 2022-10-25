@@ -3,8 +3,9 @@ import Image from 'next/image';
 import styles from '../styles/layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
+import { ProfilePic } from '../pages';
 
-const name = 'Your Name';
+const name = 'João Henrique Costa';
 export const siteTitle = 'Next.js Sample Website';
 
 export default function Layout({ children, home }) {
@@ -28,14 +29,15 @@ export default function Layout({ children, home }) {
       <header className={styles.header}>
         {home ? (
           <>
-            <Image
+            <ProfilePic />
+            {/* <Image
               priority
               src="/images/perfil.jpg"
               className={utilStyles.borderCircle}
               height={144}
               width={144}
               alt="Palinha"
-            />
+            /> */}
             <h1 className={utilStyles.heading2Xl}>{name}</h1>
           </>
         ) : (

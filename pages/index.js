@@ -1,8 +1,19 @@
 import Head from 'next/head'
 import Link from 'next/link';
 import Image from 'next/image';
+import { getSortedPostsData } from '../lib/posts';
+import styles from '../styles/index.module.css'
 
-const ProfilePic = () => (
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData();
+  return {
+    props: {
+      allPostsData,
+    },
+  };
+}
+
+export const ProfilePic = () => (
   <Image
     src="/images/perfil.jpeg" // Route of the image file
     height={144} // Desired size with correct aspect ratio
@@ -11,189 +22,89 @@ const ProfilePic = () => (
   />
 );
 
-export default function Home() {
+export default function Home({ allPostsData }) {
   return (
-    <div className="container">
+    <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>João Henrique</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className={styles.main}>
         <ProfilePic />
-        <h1 className="title">
-          Read <Link href="/posts/first-post">First Post!</Link>
-        </h1>
+        <h2 className={styles.title}>
+          João Henrique Costa
+        </h2>
 
-        <p className="description">
-          Personal blog <code>pages/index.js</code>
+        <p className={styles.description}>
+          Hello! This website contains some information about me and my work.
+          <br/>
+          You can contact me on
+          <a href='https://instagram.com/joaoahenrique_costa'> instragram </a>
+          or
+          <a href='https://api.whatsapp.com/send?phone=5516982441889'> whatsapp</a>.
         </p>
 
-        <div className="grid">
-          <a href="" className="card">
-            <h3>LinkedIn &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+        <div className={styles.grid}>
 
-          <a href="" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
+          <a 
+            href="https://www.linkedin.com/in/joaohenrique-costa/" 
+            className={styles.card}
+          >
+            <h3>LinkedIn &rarr;</h3>
+            <p>my linkedin profile</p>
           </a>
 
           <a
-            href="https://github.com/joaohenrique-costa"
-            className="card"
+            href="https://www.github.com/joaohenriquecosta"
+            className={styles.card}
           >
             <h3>Github &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
+            <p>my github profile</p>
+          </a>
+
+
+          <a 
+            href="#" 
+            className={styles.card}
+          >
+            <h3>Portfolio &rarr;</h3>
+            <p>projects I developed</p>
           </a>
 
           <a
-            href=""
-            className="card"
+            href="#"
+            className={styles.card}
           >
-            <h3>Deploy &rarr;</h3>
+            <h3>[Example] &rarr;</h3>
             <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
+              another link
             </p>
           </a>
+
         </div>
+
+        <section className="">
+          <h2 className={styles.description}>Articles</h2>
+          <ul className="">
+            {allPostsData.map(({ id, date, title }) => (
+              
+                <li className="" key="{id}">
+                  {title}
+                  <br />
+                  {id}
+                  <br />
+                  {date}
+                </li>
+            ))}
+          </ul>
+        </section>
+
       </main>
 
-      <footer>
-        Built with Next.js
+      <footer className={styles.footer}>
+        Built with Next.js and deployed at Vercel.
       </footer>
-
-      <style jsx>{`
-        .container {
-          min-height: 100vh;
-          padding: 0 0.5rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer img {
-          margin-left: 0.5rem;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
-        }
-
-        .title,
-        .description {
-          text-align: center;
-        }
-
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
-        }
-
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
-        .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
-        }
-
-        .card {
-          margin: 1rem;
-          flex-basis: 45%;
-          padding: 1.5rem;
-          text-align: left;
-          color: inherit;
-          text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .card:hover,
-        .card:focus,
-        .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
-        }
-
-        .card h3 {
-          margin: 0 0 1rem 0;
-          font-size: 1.5rem;
-        }
-
-        .card p {
-          margin: 0;
-          font-size: 1.25rem;
-          line-height: 1.5;
-        }
-
-        .logo {
-          height: 1em;
-        }
-
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
-          }
-        }
-      `}</style>
 
       <style jsx global>{`
         html,

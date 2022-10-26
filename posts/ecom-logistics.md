@@ -3,9 +3,7 @@ title: 'Fronteiras da logística do e-commerce'
 date: '2020-08-25'
 ---
 
-# Fronteiras da logística do e-commerce
-
-Soluções logísticas cada vez mais sofisticadas para o comércio eletrônico já são uma tendência há alguns anos. Os principais players de marketplaces lideram hoje o desenvolvimento do setor com grandes aquisições de logtechs e investimentos nos seus centros de distribuição e fulfillment — [vide anúncio da aquisição da Kangu pelo Mercado Livre ontem (24/08/2021)](https://www.infomoney.com.br/negocios/mercado-livre-compra-plataforma-de-entregas-kangu-e-amplia-atuacao-logistica-na-america-latina/).
+Soluções logísticas cada vez mais sofisticadas para o comércio eletrônico já são uma tendência há alguns anos. Os principais players de marketplaces lideram hoje o desenvolvimento do setor com grandes aquisições de logtechs e investimentos nos seus centros de distribuição e fulfillment — [vide anúncio da aquisição da Kangu pelo Mercado Livre em agosto de 2021](https://www.infomoney.com.br/negocios/mercado-livre-compra-plataforma-de-entregas-kangu-e-amplia-atuacao-logistica-na-america-latina/).
 
 > O serviço de fulfillment consiste em tomar conta de uma parte dos processos logísticos dos vendedores, tais como: recepção, armazenamento, picking and packing (seleção e embalo), e o envio dos produtos para um operador de transporte externo (KAWA, 2017).
 

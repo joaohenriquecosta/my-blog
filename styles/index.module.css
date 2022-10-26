@@ -54,7 +54,9 @@
 .title {
   margin: 0;
   line-height: 1.2;
-  font-size: 2.5rem;
+  font-size: 2rem;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
 
 .title,
@@ -64,7 +66,7 @@
 
 .description {
   line-height: 1.5;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .code {
@@ -101,8 +103,12 @@
 .card:hover,
 .card:focus,
 .card:active {
-  color: #00b370;
-  border-color: #00d370;
+  background-color: #ececec;
+  border-color: #666;
+}
+
+.borderCircle {
+	border-radius: 9999px;
 }
 
 .card h3 {
@@ -113,16 +119,30 @@
 .card p {
   margin: 0;
   font-size: 0.8rem;
-  line-height: 1.5;
+  line-height: 1;
 }
 
 .logo {
   height: 1em;
 }
 
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  }
+  
+  .listItem {
+  margin: 0 0 1.25rem;
+  }
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
     flex-direction: column;
   }
+}
+
+.lightText {
+  color: #666;
 }

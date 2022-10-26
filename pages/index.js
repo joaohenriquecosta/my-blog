@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getSortedPostsData } from '../lib/posts';
 import styles from '../styles/index.module.css'
+import Date from '../components/date'
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
@@ -13,17 +14,19 @@ export async function getStaticProps() {
   };
 }
 
-export const ProfilePic = () => (
+const ProfilePic = () => (
   <Image
-    src="/images/perfil.jpeg" // Route of the image file
+    src="/images/perfil.jpg" // Route of the image file
     height={144} // Desired size with correct aspect ratio
     width={144} // Desired size with correct aspect ratio
     alt="Palinha"
+    className={styles.borderCircle}
   />
 );
 
 export default function Home({ allPostsData }) {
   return (
+    
     <div className={styles.container}>
       <Head>
         <title>João Henrique</title>
@@ -32,9 +35,9 @@ export default function Home({ allPostsData }) {
 
       <main className={styles.main}>
         <ProfilePic />
-        <h2 className={styles.title}>
+        <h3 className={styles.title}>
           João Henrique Costa
-        </h2>
+        </h3>
 
         <p className={styles.description}>
           Hello! This website contains some information about me and my work.
@@ -69,32 +72,34 @@ export default function Home({ allPostsData }) {
             className={styles.card}
           >
             <h3>Portfolio &rarr;</h3>
-            <p>projects I developed</p>
+            <p>coming soon...</p>
           </a>
 
           <a
-            href="#"
+            href="https://hubsmarthome.com.br"
             className={styles.card}
           >
-            <h3>[Example] &rarr;</h3>
+            <h3>HubSmartHome &rarr;</h3>
             <p>
-              another link
+              partner ecommerce
             </p>
           </a>
 
         </div>
 
-        <section className="">
-          <h2 className={styles.description}>Articles</h2>
-          <ul className="">
+        <section>
+          <h2 className={styles.title}>Articles</h2>
+          <ul className={styles.list}>
             {allPostsData.map(({ id, date, title }) => (
               
-                <li className="" key="{id}">
-                  {title}
+                <li className={styles.listItem} key={id}>
+                  <Link href={`/posts/${id}`}>
+                    {title}
+                  </Link>
                   <br />
-                  {id}
-                  <br />
-                  {date}
+                  <small className={styles.lightText}>
+                    <Date dateString={date} />
+                  </small>
                 </li>
             ))}
           </ul>
@@ -106,20 +111,6 @@ export default function Home({ allPostsData }) {
         Built with Next.js and deployed at Vercel.
       </footer>
 
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
     </div>
-  )
+  );
 }
